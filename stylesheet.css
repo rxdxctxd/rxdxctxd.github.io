@@ -4,17 +4,46 @@
   background-image: url("m4.png");
   height: 100%;
   width: 100%;
-  border: 0;
-  margin: 0;
+  border: 0!important;
+  margin: 0!important;
+  padding:0!important;
   background-repeat: no-repeat;
+  background-color: #000000;
 }
-body, html{
+
+html, body{
   font-family:"Lucida Console", Monaco, monospace;
   height: 100%;
+  padding:0px;
+  margin: 0px;
+  color: #000000;
 }
-
-
-
+.navbar {
+  overflow: hidden;
+  border: 0px;
+  margin: 0px;
+  padding:0px;
+  padding-bottom:0px;
+  color: black;
+  background-color: #000000;
+  }
+.navbar a {
+  float: left;
+  background-color: #000000;
+  color: white;
+  text-align: center;
+  margin: 0px;
+  padding:20px;
+  border: 0!important;
+  text-decoration: none;
+  font-size: 26px;
+}
+.navbar a:hover {
+  background-color: #000000;
+  color: blue;
+  padding: 20px;
+  border: 0;
+}
 .column {
   float: left;
   width: 33.33%;
@@ -23,4 +52,9 @@ body, html{
   content: "";
   display: table;
   clear: both;
+}
+.logo-img {
+    float: left;
+    position: relative;
+    margin: 0px 0px 0px 0px;
 }
