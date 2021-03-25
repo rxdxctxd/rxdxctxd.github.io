@@ -19,6 +19,13 @@ html, body{
   margin: 0px;
   color: #000000;
 }
+div {
+  text-align: center;
+}
+.Center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
 .navbar {
   overflow: hidden;
   border: 0px;
@@ -47,7 +54,17 @@ html, body{
 }
 .column {
   float: left;
-  width: 33.33%;
+  align-content: center;
+  align-items: center;
+}
+
+.left, .right {
+  width: 25%;
+}
+
+.middle {
+  width: 50%;
+  align-content: center;
 }
 .row:after {
   content: "";

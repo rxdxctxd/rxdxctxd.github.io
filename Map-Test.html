@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+<title>rxdxctxd</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" media="screen" href="stylesheet.css">
+<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+</head>
+<div class="row">
+	
+</div>
+<body .Background>
+	<div class="Background">
+		<div class="navbar">
+			<div style="font-size:0;">
+				<a href="https://github.com/rxdxctxd-sub-account">Github</a>
+				<a href="https://discord.gg/c3UmMks">Discord</a>
+				<a href="https://www.escapefromtarkov.com/preorder-page">Buy EFT</a>
+			</div>
+		</div>	
+		<div class="row">
+			<div class="column left"><h2></h2></div>
+			<div class="column middle">
+				<h2 style="color:Green" >The Map Test</h2>
+				<p style="color:white">Today we are going to do some pretty wicked stuff with maps! :)</p>
+				<div id="mapid" class="Center" style="width: 600px; height: 400px;"></div>
+				<script>
+					var mymap = L.map('mapid').setView([51.736589, 0.465618], 13);
+
+					var Default_Map = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+						maxZoom: 18,
+						attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+							'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+						id: 'mapbox/streets-v11',
+						tileSize: 512,
+						zoomOffset: -1
+					}).addTo(mymap);
+					//Fun Facts with Bob Layer
+					var train_spotter_radius = L.circle([51.736493, 0.468633], {
+						color: 'green',
+						fillColor: '#00cc00',
+						fillOpacity: 0.5,
+						radius: 50
+					}).bindPopup("Fun Fact: This area has on average 350% more train spotters every 24hrs than the rest of the city.");
+					var acciedent_radius = L.circle([51.735964, 0.454495], {
+						color: 'green',
+						fillColor: '#00cc00',
+						fillOpacity: 0.5,
+						radius: 75
+					}).bindPopup("Fun Fact: I walked into this by acciedent once, luckily the guys there were kind and just led me out.");
+					var alt_facts = L.layerGroup([train_spotter_radius,acciedent_radius]);
+					
+					//Buildings Group
+					var civic_centre = L.polygon([[51.736958, 0.465323],[51.736716, 0.466246],[51.736144, 0.4658],[51.736294, 0.465194],[51.73642, 0.465307],[51.73654, 0.465012]], {
+						color: 'Green',
+						fillColor: '#00cc00',
+					}).bindPopup("Civic Centre");
+					var Buildings = L.layerGroup([civic_centre]);
+					var locational_popup = L.popup();
+					function onMapClick(e) {
+						locational_popup
+							.setLatLng(e.latlng)
+							.setContent("Location: " + e.latlng.toString())
+							.openOn(mymap);
+					}
+					mymap.on('click', onMapClick);
+					var baseMaps = { 
+						"Default": Default_Map
+					};
+					var overlayMaps = {
+						"Bob's Facts": alt_facts,
+						"Buildings": Buildings
+					};
+					
+					L.control.layers(baseMaps,overlayMaps).addTo(mymap);
+					
+					/* Why I keep this code? Because I spent an hour idiotically writing this only to realise you can control layers with a proprietary option :(. 
+					var FactController = L.Control.extend({
+						onAdd: function() {
+							var button = L.DomUtil.create('button');
+							button.innerHTML = "Show / Hide Bob's Facts";
+							L.DomEvent.on(button, 'click', function (alt_facts,mymap) {
+								var bobs_facts_on_screen = mymap.hasLayer(alt_facts);
+								if (bobs_facts_on_screen = true) {
+									mymap.removeLayer(alt_facts)
+								}
+								if (mymap.hasLayer(alt_facts)) {
+									mymap.removeLayer(alt_facts)
+								}
+								else {
+									mymap.addLayer(alt_facts)
+								}
+							});
+							return button;
+						}
+					});
+					var FactController = (new FactController()).addTo(mymap);*/
+					
+					
+				</script>
+				<p style="color:white">So Maps are cool and if you see on this pretty little puppy, my map centers on Chelmsford.</p>
+				<p style="color:white"> Pretty neat huh? Now if you click on a location that is not marked you will get a nice pop-up, I call him bob but you can keep calling him pop-up. He tells you where you are on the map.
+				You see that green circle? Click on it, Bob told me he has a nice fact for you (You will need to turn on the layer in the top right first).</p>
+			</div>
+			<div class="column right"><h2></h2></div>
+		</div>
+	</div>	
+</body>
