@@ -2,13 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 .Background {
-  background-image: url("m4.png");
-  height: 100%;
-  width: 100%;
+  background: url("m4.png") no-repeat center center fixed;
+  min-height: 100%;
+  min-width: 100%;
   border: 0!important;
   margin: 0!important;
   padding:0!important;
-  background-repeat: no-repeat;
+  background-clip: padding-box;
+  background-size: cover;
   background-color: #000000;
 }
 
@@ -21,8 +22,6 @@ html, body{
 }
 div {
   text-align: center;
-  display: block; 
-  margin: auto;
   }
 .Center {
     display: block;
