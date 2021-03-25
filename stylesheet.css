@@ -25,7 +25,8 @@ div {
 .Center {
     display: block;
     margin-left: auto;
-    margin-right: auto }
+    margin-right: auto; 
+}
 .navbar {
   overflow: hidden;
   border: 0px;
